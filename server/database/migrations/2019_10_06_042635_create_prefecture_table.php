@@ -31,6 +31,6 @@ class CreatePrefectureTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prefecture');
+        Schema::dropIfExists('prefectures');
     }
 }

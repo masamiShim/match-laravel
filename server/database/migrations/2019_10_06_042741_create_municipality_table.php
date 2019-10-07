@@ -31,6 +31,6 @@ class CreateMunicipalityTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('municipality');
+        Schema::dropIfExists('municipalities');
     }
 }

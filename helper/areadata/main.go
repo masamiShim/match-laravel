@@ -66,7 +66,7 @@ func createSqlPrefecutures(prefs []Prefs) {
 	writer := bufio.NewWriter(file)
 
 	for i := 0; i < len(prefs); i++ {
-		query := "insert into " + DatabaseName + "." + PrefTable + " (code, name) values ('" + prefs[i].prefData.prefCd + "', '" + prefs[i].prefData.prefNm + "');\n"
+		query := "insert into " + DatabaseName + "." + PrefTable + " (code, name, created_by, updated_by) values ('" + prefs[i].prefData.prefCd + "', '" + prefs[i].prefData.prefNm + "', 0, 0);\n"
 		if _, err := writer.WriteString(query); err != nil {
 			panic(err)
 		}
@@ -87,7 +87,7 @@ func createSqlMunicipalities(prefs []Prefs) {
 
 	for i := 0; i < len(prefs); i++ {
 		for j := 0; j < len(prefs[i].municiData); j++ {
-			query := "insert into " + DatabaseName + "." + MuniciTable + " (code, name) values ('" + prefs[i].municiData[j].muniCd + "', '" + prefs[i].municiData[j].muniNm + "');\n"
+			query := "insert into " + DatabaseName + "." + MuniciTable + " (code, name, created_by, updated_by) values ('" + prefs[i].municiData[j].muniCd + "', '" + prefs[i].municiData[j].muniNm + "',0 ,0);\n"
 			if _, err := writer.WriteString(query); err != nil {
 				panic(err)
 			}
@@ -109,7 +109,7 @@ func createSqlForRel(prefs []Prefs) {
 
 	for i := 0; i < len(prefs); i++ {
 		for j := 0; j < len(prefs[i].municiData); j++ {
-			query := "insert into " + DatabaseName + "." + RelPrefMuniTable + " (prefecture_code, municipality_code) values ('" + prefs[i].prefData.prefCd + "', '" + prefs[i].municiData[j].muniCd + "');\n"
+			query := "insert into " + DatabaseName + "." + RelPrefMuniTable + " (prefecture_code, municipality_code, created_by, updated_by) values ('" + prefs[i].prefData.prefCd + "', '" + prefs[i].municiData[j].muniCd + "', 0, 0);\n"
 			if _, err := writer.WriteString(query); err != nil {
 				panic(err)
 			}
